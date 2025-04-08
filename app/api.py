@@ -126,27 +126,9 @@ def get_all_molecular_profiles_id(molecular_profile_id: str) -> dict:
     return result
 
 
-    
-
-
-@app.get('/molecular_profile_study/studyId/{study_id}/molecularProfileId/{molecular_profile_id}')
-def get_all_molecular_profiles_study(study_id,molecular_profile_id,limit:int=10,offset:int=0)->dict:
-    molecular_profiles_study=cb.getMolecularProfilesInStudy(studyId=study_id,molecularProfileId=molecular_profile_id)
-    length=len(molecular_profiles_study)
-    paginated=molecular_profiles_study[offset:offset+limit]
-
-    return{
-        "total":length,
-        "offset":offset,
-        "limit":limit,
-        "results":paginated
-        }
-    
-
-
 @app.get('/mutation/molecular_profile/molecularProfileId/{molecular_profile_id}/sampleId/{sample_id}')
 def get_mutations_molecular_profile(molecular_profile_id,sample_id,limit:int=10,offset:int=0)-> dict:
-    mutations=cb.getMutationsInMolecularProfile(molecularProfileId=molecular_profile_id,sampleListId=sample_id,projection='DETAILED',append='yes')
+    mutations=cb.getMutationsInMolecularProfile(molecular_profile_id,sampleListId=sample_id,projection='DETAILED',append='yes')
     length=len(mutations)
     paginated=mutations[offset:offset+limit]
 
@@ -171,22 +153,6 @@ def get_all_cancer_types(limit:int=10,offset:int=0)-> dict:
         "limit":limit,
         "results":paginated
         }
-
-
-
-@app.get('/cancer/cancerTypeId/{cancer_type_id}')
-def get_cancer_id(cancer_type_id,limit:int=10,offset:int=0)->dict:
-    cancer_id=cb.getCancerByID(cancerTypeId=cancer_type_id)
-    length=len(cancer_id)
-    paginated=cancer_id[offset:offset+limit]
-
-    return{
-        "total":length,
-        "offset":offset,
-        "limit":limit,
-        "results":paginated
-        }
-
 
 # clinical attributes
 @app.get('/clinical_attributes')
