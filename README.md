@@ -1,7 +1,8 @@
 # cbio-recommender
 proposal demo
-GSoC 2025 
+GSoC 2025 (was late to submission by 14 minutes) 🥹
 patient recommendation system
+
 
 This is a mini demo for the proposed GSoC 2025 project: a patient recommendation system that suggests genomically and clinically similar patients within cBioPortal.
 As mentioned: in oncology,comparing similar cases can inform research and treatment strategies.This tool aims to automate that process using molecular and clinical profiles.
